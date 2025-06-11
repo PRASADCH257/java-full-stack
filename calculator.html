@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Calculator</title>
+  <link rel="stylesheet" href="calculator.css">
+  <style>form{
+    text-align: center;
+  padding-top :130px;
+  word-spacing: 10px;
+
+}
+#calculator input{
+    border-radius: 25px;
+    padding:25px;
+   font-size: 25px;
+}
+#res{
+    border-radius: 10px;
+    font-size: 25px;
+    width:400px;
+    height:50px;
+}
+fieldset{
+    border-radius: 20px;
+    width: 500px;
+margin:35%;
+margin-top: 100px;
+background-color: black;
+}
+input:hover{
+    background-color:aliceblue;
+}</style>
+</head>
+<body>
+
+         <form><fieldset>
+            <input type="text" id='res'><br><br>
+              <div id=calculator>
+               <input type="button" value='C' onclick="Clear()" id="clear">
+               <input type="button" value='del' onclick="Back()" id="backspace">
+               <input type="button" value='%' onclick="Solve('%')">
+               <input type="button" value='/' onclick="Solve('/')">
+               <br><br>
+               <input type="button" value='7' onclick="Solve('7')">
+               <input type="button" value='8' onclick="Solve('8')">
+               <input type="button" value='9' onclick="Solve('9')">
+               <input type="button" value='x' onclick="Solve('*')">
+               <br><br>
+               <input type="button" value='4' onclick="Solve('4')">
+               <input type="button" value='5' onclick="Solve('5')">
+               <input type="button" value='6' onclick="Solve('6')">
+               <input type="button" value='-' onclick="Solve('-')">
+               <br><br>
+               <input type="button" value='1' onclick="Solve('1')">
+               <input type="button" value='2' onclick="Solve('2')">
+               <input type="button" value='3' onclick="Solve('3')">
+               <input type="button" value='+' onclick="Solve('+')">
+               <br><br>
+               <input type="button" value='00' onclick="Solve('00')">
+               <input type="button" value='0' onclick="Solve('0')">
+               <input type="button" value='.' onclick="Solve('.')">
+               <input type="button" value='=' onclick="Result()">
+             </div>
+    </fieldset>     </form>
+   
+<script>
+
+  function Solve(val) {
+    document.getElementById("res").value += val;
+  }
+
+  
+  function Clear() {
+    document.getElementById("res").value = "";
+  }
+
+
+  function Back() {
+    let current = document.getElementById("res").value;
+    document.getElementById("res").value = current.slice(0, -1);
+  }
+
+
+  function Result() {
+    let input = document.getElementById("res").value;
+    try {
+      let output = eval(input);
+      document.getElementById("res").value = output;
+    } catch (e) {
+      document.getElementById("res").value = "Error";
+    }
+  }
+</script>
+
+</body>
+</html>
